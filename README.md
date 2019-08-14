@@ -8,6 +8,18 @@ Fastly scans open ports on large networks and bruteforce login mechanism of foun
 
 Masspwn is a bash script that takes adventage of the power and efficiency of [masscan](https://github.com/robertdavidgraham/masscan) tool for finding open ports in large networks. Masscan is much faster than nmap for doing that work. Once masscan found specified open ports on specified hosts, pass this output to [nmap](https://github.com/nmap/nmap) for scan the services versions of open ports found by masscan. In this way nmap only scan versions of active ports on active hosts, avoiding wasting a lot of time finding active hosts and ports trought nmap. Then nmap pass this output to [brutespray](https://github.com/x90skysn3k/brutespray) tool, that automatically brute-forces services login mechanism with default credentials using [Medusa](https://github.com/jmk-foofus/medusa). Brutespray can bruteforce authentication mechanism of **ssh**, **ftp**, **telnet**, **vnc**, **mssql**, **mysql**, **postgresql**, **rsh**, **imap**, **nntp**, **pcanywhere**, **pop3**, **rexec**, **rlogin**, **smbnt**, **smtp**, **svn**, **vmauthd** and **snmp** protocols.
 
+## Installation
+
+The installation is quite simple. This script checks for dependences and download them if not present in your OS. Open a terminal in Kali Linux and type the following commands:
+
+```sh
+git clone https://github.com/JuanSchallibaum/masspwn
+cd masspwn
+chmod +x masspwn.sh
+./masspwn.sh --help
+
+```
+
 ## Usage
 
 ```sh
