@@ -39,12 +39,12 @@ chmod +x masspwn.sh
 ```sh
 ./masspwn.sh -h 172.217.0.0/16 -p1-65535 -r sending 10000 packets per seccond -o google
 ```
-*The previous command scan all ports of Google hosts sending 10000 packets per seccond, and bruteforce found services login with brutespray default credentials, and saves results in 'google' folder.*
+*The previous command scan all ports of Google hosts sending 10000 packets per seccond, bruteforce found services login with brutespray default credentials, and saves results in 'google' folder.*
 
 ```sh
 ./masspwn.sh -h host_list.txt -p1-1000 -u /usr/share/wordlists/users.txt -p /usr/share/wordlists/passwords.txt -o results
 ```
-*The previous command scan port range of 1 to 1000 of hosts listed in host_list.txt sending 600 packets per seccond, and bruteforce found services login with customs wordlists for users and passwords, and saves results in 'results' folder.*
+*The previous command scan port range of 1 to 1000 of hosts listed in host_list.txt sending 600 packets per seccond, bruteforce found services login with customs wordlists for users and passwords, and saves results in 'results' folder.*
 
 ## Credits
 
