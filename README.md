@@ -23,7 +23,7 @@ chmod +x masspwn.sh
 ## Usage
 
 ```sh
-/masspwn.sh -h [CIDR | HOSTS LIST] -p[PORT RANGE] -o [OUTPUT DIRECTORY] <OPTIONS>
+./masspwn.sh -h [CIDR | HOSTS LIST] -p[PORT RANGE] -o [OUTPUT DIRECTORY] <OPTIONS>
 ```
 
 ### Optional arguments:
