@@ -37,7 +37,7 @@ chmod +x masspwn.sh
 
 ## Examples
 ```sh
-./masspwn.sh -h 172.217.0.0/16 -p1-65535 -r sending 10000 packets per seccond -o google
+./masspwn.sh -h 172.217.0.0/16 -p1-65535 -r 10000 -o google
 ```
 *The previous command scan all ports of Google hosts sending 10000 packets per seccond, bruteforce found services login with brutespray default credentials, and saves results in 'google' folder.*
 
