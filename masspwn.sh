@@ -103,7 +103,7 @@ if [[ -z $HOSTS_ARG || -z $PORTS_ARG || -z $OUTPUT_ARG ]];then
 	echo "--help					  Show this help message and exit"
 	echo
 	echo -e "${yellow}Examples:${endColor}"
-	echo -e "${green}./masspwn.sh -h 172.217.0.0/16 -p1-65535 -r 10000 -t -o google${endColor}"
+	echo -e "${green}./masspwn.sh -h 172.217.0.0/16 -p1-65535 -r 10000 -t 1000 -o google${endColor}"
 	echo "Scan all ports of Google hosts sending 10000 packets per seccond, bruteforce found services login with brutespray default credentials with 1000 threads, and saves results in 'google' folder"
 	echo
 	echo -e "${green}./masspwn.sh -h host_list.txt -p1-1000 -u /usr/share/wordlists/users.txt -p /usr/share/wordlists/passwords.txt -o results${endColor}"
