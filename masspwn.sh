@@ -63,7 +63,7 @@ do
 		RATE="$2"
 		shift
         ;;
-	-t|--thread)
+	-t|--threads)
 		THREAD_ARG="OK"
 		THREAD="$2"
 		shift
