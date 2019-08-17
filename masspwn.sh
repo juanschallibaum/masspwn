@@ -107,7 +107,7 @@ if [[ -z $HOSTS_ARG || -z $PORTS_ARG || -z $OUTPUT_ARG ]];then
 	echo "Scan all ports of Google hosts sending 10000 packets per seccond, bruteforce found services login with brutespray default credentials with 1000 threads, and saves results in 'google' folder"
 	echo
 	echo -e "${green}./masspwn.sh -h host_list.txt -p1-1000 -u /usr/share/wordlists/users.txt -p /usr/share/wordlists/passwords.txt -o results${endColor}"
-	echo "Scan port range of 1 to 1000 of hosts listed in host_list.txt sending 600 packets per seccond, bruteforce found services login with customs wordlists for users and passwords with 600 threads, and saves results in 'results' folder"
+	echo "Scan port range of 1 to 1000 of hosts listed in host_list.txt sending 600 packets per seccond, bruteforce found services login with customs wordlists for users and passwords with 6 threads, and saves results in 'results' folder"
 
 	exit
 fi
