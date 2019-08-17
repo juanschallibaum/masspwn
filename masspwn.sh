@@ -117,12 +117,12 @@ echo -e "${green}# Checking dependences...${endColor}"
 echo
 
 find_dependence () {
-  if [ -f /usr/bin/$2 ]; then
-    echo -e "${green}[*] brutespray is installed${endColor}"
+  if [ -f /usr/bin/$1 ]; then
+    echo -e "${green}[*] $1 is installed${endColor}"
   else 
-    echo -e "${red}[!] brutespray isn't installed... Installing now${endColor}"
+    echo -e "${red}[!] $1 isn't installed... Installing now${endColor}"
 	echo
-	apt install brutespray
+	apt install $1
   fi
 }
 
