@@ -123,13 +123,12 @@ find_dependence () {
     echo -e "${red}[!] $1 isn't installed... Installing now${endColor}"
 	echo
 	apt install $1
+	echo
   fi
 }
 
 find_dependence "masscan"
-echo
 find_dependence "nmap"
-echo
 find_dependence "brutespray"
 
 if [ -d $OUTPUT ]; then
