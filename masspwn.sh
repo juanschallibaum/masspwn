@@ -126,11 +126,11 @@ find_dependence () {
   fi
 }
 
-find_dependence("masscan")
+find_dependence "masscan"
 echo
-find_dependence("nmap")
+find_dependence "nmap"
 echo
-find_dependence("brutespray")
+find_dependence "brutespray"
 
 if [ -d $OUTPUT ]; then
     rm -r $OUTPUT
