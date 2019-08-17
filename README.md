@@ -33,6 +33,7 @@ chmod +x masspwn.sh
 -pw  | --passwords [PASSWORDS WORDLIST]   Specify custom wordlist for passwords bruteforce<br/>
 --help                                    Show this help message and exit<br/>
 -r   | --rate [PACKETS PER SECCOND] 	    Set packets per seccond send to find open ports<br/>
+-t   | --threads [BRUTEFORCE THREADS] 	  Set the number of threads used for bruteforce with bruespray"<br/>
 </pre>
 
 ## Examples
