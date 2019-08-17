@@ -116,8 +116,8 @@ fi
 echo -e "${green}# Checking dependences...${endColor}"
 echo
 
-find_dependence ($DEPENDECIE) {
-  if [ -f /usr/bin/$DEPENDECIE ]; then
+find_dependence () {
+  if [ -f /usr/bin/$2 ]; then
     echo -e "${green}[*] brutespray is installed${endColor}"
   else 
     echo -e "${red}[!] brutespray isn't installed... Installing now${endColor}"
