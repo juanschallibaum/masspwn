@@ -26,7 +26,7 @@ HELP_ARG=""
 RATE_ARG=""
 THREADS_ARG=""
 
-# Mientras el número de argumentos NO SEA 0
+# While the number of arguments not equal 0
 while [ $# -ne 0 ]
 do
     case "$1" in
@@ -116,31 +116,21 @@ fi
 echo -e "${green}# Checking dependences...${endColor}"
 echo
 
-if [ -f /usr/bin/masscan ]; then
-    echo -e "${green}[*] masscan is installed${endColor}"
-else 
-    echo -e "${red}[!] masscan isn't installed... Installing now${endColor}"
-	echo
-	apt install masscan
-	echo
-fi
-
-if [ -f /usr/bin/nmap ]; then
-    echo -e "${green}[*] nmap is installed${endColor}"
-else 
-    echo -e "${red}[!] nmap isn't installed... Installing now${endColor}"
-	echo
-	apt install nmap
-	echo
-fi
-
-if [ -f /usr/bin/brutespray ]; then
+find_dependence ($DEPENDECIE) {
+  if [ -f /usr/bin/$DEPENDECIE ]; then
     echo -e "${green}[*] brutespray is installed${endColor}"
-else 
+  else 
     echo -e "${red}[!] brutespray isn't installed... Installing now${endColor}"
 	echo
 	apt install brutespray
-fi
+  fi
+}
+
+find_dependence("masscan")
+echo
+find_dependence("nmap")
+echo
+find_dependence("brutespray")
 
 if [ -d $OUTPUT ]; then
     rm -r $OUTPUT
@@ -169,7 +159,7 @@ else
 		echo -e "${purple}masscan $PORTS -iL $HOSTS --max-rate 600 -oG $OUTPUT/masscan_results${endColor}"
 		masscan $PORTS -iL $HOSTS --max-rate 600 -oG $OUTPUT/masscan_results
 	else
-		echo -e "${purple}masscan $PORTS -iL $HOSTS --max-rate 600 -oG $OUTPUT/masscan_results${endColor}"
+		echo -e "${purple}masscan $PORTS -iL $HOSTS --max-rate $RATE -oG $OUTPUT/masscan_results${endColor}"
 		masscan $PORTS -iL $HOSTS --max-rate $RATE -oG $OUTPUT/masscan_results
 	fi
 fi
