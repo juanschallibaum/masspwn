@@ -57,3 +57,7 @@ This bash script is quite simple, but very powerfull thanks to previously mentio
 [Medusa](https://github.com/jmk-foofus/medusa) made by Joe Mondloch<br/>
 
 and the workflow approached in this script is inspired by Jason Haddix in your [Bug Bounty Hunter Methodology v3](https://www.youtube.com/watch?v=Qw1nNPiH_Go&t=4254s) speaking.
+
+## Disclaimer
+
+Usage of masspwn for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program.
